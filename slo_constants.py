@@ -82,8 +82,8 @@ PRESET_HELP = {
     "Verbünde (Voreinstellung)": "Sechs Verbünde, 80 % der Kanten innen: das Standardnetz der Reihe. Constraint und Grad wählen hier teils verschiedene Knoten.",
     "Makler-Beispiel": "Drei Verbünde mit einem Makler (Knoten 15, je ein Kontakt in jeden Verbund) und einem Hub mit Blättern (Knoten 4): der Rechenweg des Constraints von Hand nachvollziehbar.",
     "Zufallsnetz": "Ohne jede Verbundstruktur: das Constraint folgt fast ganz dem Grad.",
-    "Ring mit Abkürzungen": "Fast alle Knoten haben denselben Grad; die wenigen Abkürzungen sind die schwachen Bindungen im Sinne Granovetters.",
+    "Ring mit Abkürzungen": "Rund drei Viertel der Knoten haben denselben Grad; die wenigen Abkürzungen sind die schwachen Bindungen im Sinne Granovetters.",
     "Hubs am Rand": "Fünf Hubs mit vielen Blättern: viel Grad, aber die Blätter sind keine Makler-Kontakte.",
-    "Unser Link-Netz (alle Seiten)": "Das echte Link-Netz von sebastianhanisch.net: Startseite und Kontaktseite sind mit allen Seiten verlinkt, deshalb gibt es kaum strukturelle Löcher.",
-    "Link-Netz ohne Startseite und Kontakt": "Dasselbe Netz ohne die beiden Navigationsseiten: jetzt zeigen sich die Sammelseiten als Makler.",
+    "Unser Link-Netz (alle Seiten)": "Das echte Link-Netz von sebastianhanisch.net: Startseite und Kontaktseite sind mit fast allen Seiten verlinkt (nur die isolierte 404-Seite fehlt), deshalb gibt es kaum strukturelle Löcher.",
+    "Link-Netz ohne Startseite und Kontakt": "Dasselbe Netz ohne die beiden Navigationsseiten: jetzt haben die Sammelseiten das niedrigste Constraint und die höchste Betweenness; sie sind zugleich die Seiten mit dem höchsten Grad.",
 }

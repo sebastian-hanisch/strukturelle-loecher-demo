@@ -124,7 +124,7 @@ with st.expander("So lesen Sie die Maße", expanded=True):
     st.markdown(
         """
 1. **Ego-Netz:** ein Knoten mit seinen Kontakten und den Verbindungen, die diese Kontakte untereinander haben. Sind die Kontakte untereinander **nicht** verbunden, liegen zwischen ihnen *strukturelle Löcher*; der Knoten ist der Makler, über den sie sich erreichen.
-2. **Constraint (Burt):** wie stark ein Knoten in seine Nachbarschaft eingebunden ist. Jeder Kontakt bekommt den Anteil *p*<sub>ij</sub> = 1/Grad; dazu kommt der Umweg über gemeinsame Kontakte. Die **Quadrate** dieser Anteile werden addiert. Ein Makler zwischen *r* getrennten Verbünden hat 1/*r*; ein Knoten, dessen Kontakte alle einander kennen, hat viel mehr (ein Dreieck: 1,125, der Wert kann also über 1 liegen).
+2. **Constraint (Burt):** wie stark ein Knoten in seine Nachbarschaft eingebunden ist. Jeder Kontakt bekommt den Anteil *p*<sub>ij</sub> = 1/Grad; dazu kommt der Umweg über gemeinsame Kontakte. Die **Quadrate** dieser Anteile werden addiert. Ein Makler zwischen *r* getrennten Verbünden hat 1/*r*; ein Knoten, dessen Kontakte alle einander kennen, hat viel mehr (ein Dreieck: 1,125, also über 1; bei größeren vollständigen Ego-Netzen sinkt der Wert unter 1).
 3. **Effektive Größe (Burt, in der Fassung von Borgatti):** Grad minus 2·*t*/Grad, wobei *t* die Zahl der Verbindungen unter den Kontakten ist: die Zahl der Kontakte ohne die Doppelungen.
 4. **Überlappung einer Kante (Onnela u. a.):** die gemeinsamen Kontakte beider Enden geteilt durch alle ihre Kontakte. **Überlappung 0** heißt: kein gemeinsamer Bekannter, das ist hier die „schwache Bindung“ im Sinne Granovetters (ungewichtet, nur nach der Struktur).
 5. **Brücke:** eine Kante, ohne die das Netz auseinanderfällt (aus der Brücken-Demo). Eine Kante ohne gemeinsamen Bekannten ist nicht unbedingt eine Brücke: oft gibt es einen Umweg über mehrere Schritte.
@@ -150,7 +150,7 @@ with st.sidebar:
     seed = st.number_input("Zufalls-Seed des Netzes", *bounds("seed_input"), key="seed_input", step=1, disabled=fixed)
     st.button("🎲 Neues Netz würfeln", width="stretch", on_click=randomize_seed, disabled=fixed)
     nav = st.selectbox("Navigationsseiten (wirkt nur beim Link-Netz)", C.NAV_CHOICES, key="nav_select",
-                       help="Startseite und Kontaktseite sind mit allen Seiten verlinkt. Mitgezählt gibt es kaum strukturelle Löcher; weggelassen zeigen sich die Sammelseiten als Makler.")
+                       help="Startseite und Kontaktseite sind mit fast allen Seiten verlinkt. Mitgezählt gibt es kaum strukturelle Löcher; weggelassen haben die Sammelseiten das niedrigste Constraint, sie sind zugleich die Seiten mit dem höchsten Grad.")
     st.markdown("**Ansicht**")
     mass = st.selectbox("Knoten färben nach", C.MEASURES, key="mass_select", help="Welches Maß die Farbe der Knoten im Netz bestimmt.")
     st.caption(C.MEASURE_HELP[mass])
@@ -308,7 +308,7 @@ st.markdown(
 | **Ungewichtet, ungerichtet** | Burt rechnet mit Gewichten (Zeit, Umsatz): das gewichtete Constraint ist ein anderer Wert. Hier zählt jeder Kontakt gleich, Granovetters „Stärke“ ist nur die Struktur (Überlappung), nicht die Dauer oder Häufigkeit. | – |
 | **Blätter zählen als Löcher** | Ein Hub mit drei Kontakten, die sonst niemanden kennen, hat im Makler-Beispiel ein *kleineres* Constraint als der Makler zwischen drei Verbünden: das Maß unterscheidet nicht, ob die Kontakte etwas wert sind. | – |
 | **Synthetische Netze mit bekannten Verbünden** | „Verbund“ ist die geplante Einteilung des Generators. In echten Netzen gibt es keine Wahrheit; die Zahlen gelten für diese Netztypen bei diesen Größen (Median über feste Netze). | Stück 2 (Blockmodell) |
-| **Rangkorrelation bei vielen gleichen Graden** | Im Gitter und im Ring haben fast alle Knoten denselben Grad: Rangkorrelationen und Top-5-%-Mengen hängen dann an Gleichständen (Regel: kleinere Knotennummer) und sind unscharf. Die Demo meldet es. | – |
+| **Rangkorrelation bei vielen gleichen Graden** | Im Gitter und im Ring haben rund drei Viertel der Knoten denselben Grad: Rangkorrelationen und Top-5-%-Mengen hängen dann an Gleichständen (Regel: kleinere Knotennummer) und sind unscharf. Die Demo meldet es. | – |
 | **Ausbreitung: SI mit gleicher Wahrscheinlichkeit** | Der Informationsvorsprung ist ein Modellbefund (jeder Kontakt gleich wahrscheinlich, keine Verzögerung, keine Gegenkräfte). Er sagt nichts über echte Nachrichten. | Stück 5, Stück 13 |
 | **Link-Netz als Sonderfall** | Seiten und Demos verlinken sich nach Navigationsregeln, nicht nach Beziehungen. Es dient als Prüfstein, nicht als Beleg für soziale Netze. | – |
 | **Kausalität** | Ob Makler tatsächlich mehr Erfolg haben, zeigen Experimente an echten Personen, nicht diese Messungen. Rajkumar u. a. (2022) fanden bei LinkedIn einen umgekehrt U-förmigen Zusammenhang zwischen Bindungsstärke und Stellenvermittlung, der von der Branche abhängt; die Demo bildet das **nicht** nach. | – |
